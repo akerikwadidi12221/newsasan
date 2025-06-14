@@ -33,6 +33,17 @@ BuildMart Online is a full-stack e-commerce platform powered by Django and React
 
 For more details see the `docs/` directory.
 
+## API Endpoints
+
+The catalog app exposes basic read-only endpoints under `/api/catalog/`:
+
+- `/categories/` list of product categories
+- `/categories/<id>/` single category details
+- `/brands/` list of brands
+- `/brands/<id>/` single brand details
+- `/products/` list of products
+- `/products/<id>/` single product details
+
 ## Adding a Django App
 Create a new folder under `buildmart-online/backend/` and add it to `INSTALLED_APPS` in `buildmart/settings/base.py`.
 
