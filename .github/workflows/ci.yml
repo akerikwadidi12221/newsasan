@@ -1,0 +1,44 @@
+name: CI
+on: [pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: buildmart
+          POSTGRES_USER: buildmart
+          POSTGRES_PASSWORD: buildmart
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install backend deps
+        run: |
+          pip install -r buildmart-online/backend/requirements.txt
+          pip install pytest
+      - name: Run backend tests
+        run: |
+          cd buildmart-online/backend
+          pytest
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install frontend deps
+        run: |
+          cd buildmart-online/frontend
+          npm install
+      - name: Run frontend tests
+        run: |
+          cd buildmart-online/frontend
+          npm run test -- --ci

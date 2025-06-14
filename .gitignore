@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+env/
+*.sqlite3
+
+# Node
+node_modules/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# Env files
+.env
+.env.*
+
+# Misc
+*.log

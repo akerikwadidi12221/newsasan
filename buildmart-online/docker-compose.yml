@@ -1,0 +1,43 @@
+version: '3'
+services:
+  web:
+    build:
+      context: ./backend
+    command: gunicorn buildmart.wsgi:application -b 0.0.0.0:8000
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+  frontend:
+    build:
+      context: ./frontend
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "3000:3000"
+    command: npm run dev
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: buildmart
+      POSTGRES_USER: buildmart
+      POSTGRES_PASSWORD: buildmart
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  redis:
+    image: redis:7
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./frontend/dist:/usr/share/nginx/html
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+      - frontend
+volumes:
+  postgres_data:

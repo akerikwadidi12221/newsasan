@@ -1,0 +1,8 @@
+django>=4.2
+djangorestframework
+django-cors-headers
+django-ratelimit
+argon2-cffi
+psycopg2-binary
+channels
+redis
