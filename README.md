@@ -61,3 +61,34 @@ Create a component under `frontend/src/pages` or `frontend/src/components` and r
 ## Running Tests
 - Backend: `pytest` inside `buildmart-online/backend`
 - Frontend: `npm run test` inside `buildmart-online/frontend`
+
+## Product Data Storage
+
+Product images and specification files can be stored inside the `database/` directory
+at the project root:
+
+```
+newsasan/
+  database/
+    images/   # place JPG/PNG files here
+    specs/    # CSV or JSON specification files
+```
+
+Commit your assets to Git if you want them version controlled. Empty `.gitkeep`
+files are provided so the folders exist by default.
+
+## Loading Brand Categories
+
+After applying migrations you can create the four main brand categories using the
+included management command:
+
+```bash
+python buildmart-online/backend/manage.py create_brand_categories
+```
+
+This will ensure the following categories exist:
+1. لوله واتصالات پنج لایه نیوپایپ
+2. لوله و اتصالات تک لایه آذین
+3. لوله و اتصالات فاضلابی مولتی پایپ
+4. محصولات پلی اتیلن آبیاری دینا پلیمر
+
