@@ -1,14 +1,15 @@
 # backend/catalog/models.py
 from django.db import models
 from django.conf import settings  # برای گرفتن مدل User
+from mptt.models import MPTTModel, TreeForeignKey
 
 # --------------------------------------------------
 # 1) دسته‌بندی‌ها
 # --------------------------------------------------
-class Category(models.Model):
+class Category(MPTTModel):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
-    parent = models.ForeignKey(
+    parent = TreeForeignKey(
         "self",
         on_delete=models.SET_NULL,
         null=True,
@@ -23,6 +24,9 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = "Categories"
         ordering = ["display_order", "name"]
+
+    class MPTTMeta:
+        order_insertion_by = ["name"]
 
     def __str__(self):
         return self.name

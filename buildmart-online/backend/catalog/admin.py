@@ -1,5 +1,6 @@
 # backend/catalog/admin.py
 from django.contrib import admin
+from mptt.admin import DraggableMPTTAdmin
 from .models import (
     Category, Brand, Product, ProductImage,
     SpecificationType, ProductSpecification,
@@ -11,15 +12,15 @@ from .models import (
 # 1) دسته‌بندی و برند (ساده)
 # --------------------------------------------------
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "parent", "display_order")
-    list_filter  = ("parent",)
+class CategoryAdmin(DraggableMPTTAdmin):
+    list_display = ("tree_actions", "indented_title", "display_order")
+    list_display_links = ("indented_title",)
     search_fields = ("name",)
 
 
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
-    list_display = ("name", "is_active")
+    list_display = ("name", "website", "is_active")
     search_fields = ("name",)
     list_filter = ("is_active",)
 
