@@ -51,6 +51,7 @@ class Brand(models.Model):
 # 3) محصول
 # --------------------------------------------------
 class Product(models.Model):
+    code = models.CharField(max_length=50, unique=True)
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
@@ -67,6 +68,7 @@ class Product(models.Model):
         indexes = [
             models.Index(fields=["name"]),
             models.Index(fields=["category"]),
+            models.Index(fields=["code"]),
         ]
 
     def __str__(self):

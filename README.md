@@ -92,3 +92,16 @@ This will ensure the following categories exist:
 3. لوله و اتصالات فاضلابی مولتی پایپ
 4. محصولات پلی اتیلن آبیاری دینا پلیمر
 
+## Importing Products from JSON
+
+Sample product data can be stored in `database/space/got.json`. After
+creating your categories run the following command to load these products
+into the database:
+
+```bash
+python buildmart-online/backend/manage.py import_products_json
+```
+
+The command accepts an optional path to the JSON file and a category ID to
+assign the imported products.
+
