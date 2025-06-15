@@ -27,7 +27,8 @@ BuildMart Online is a full-stack e-commerce platform powered by Django and React
    npm run dev
    ```
    The frontend dev server will be available at `http://localhost:3000/` and the
-   backend will show a simple JSON message at `http://127.0.0.1:8000/`.
+   backend will respond at `http://127.0.0.1:8000/` with a small JSON
+   confirmation.
 7. Alternatively, start everything with Docker:
    ```bash
    docker-compose up --build
