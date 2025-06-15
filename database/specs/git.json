@@ -1,0 +1,47 @@
+[
+  {
+    "p_number": "p-1594",
+    "product_name": "محرک الکتریکی (شیر برقی)",
+    "brand": "نیوپایپ",
+    "group_name": "شیرهای تاسیسات مکانیکی",
+    "old_code": "30259",
+    "product_code": "861661010",
+    "specification": "220 ولت"
+  },
+  {
+    "p_number": "p-2100",
+    "product_name": "سه راهی تبدیل کلمپی",
+    "brand": "نیوپایپ",
+    "group_name": "اتصالات کلمپی",
+    "old_code": null,
+    "product_code": null,
+    "specification": "اتصال لوله پنج لایه به صورت سه راهی با قابلیت تغییر سایز"
+  },
+  {
+    "p_number": "p-2101",
+    "product_name": "سه راهی کلمپی",
+    "brand": "نیوپایپ",
+    "group_name": "اتصالات کلمپی",
+    "old_code": null,
+    "product_code": null,
+    "specification": "اتصال لوله پنج لایه به صورت سه راهی هم سایز"
+  },
+  {
+    "p_number": "p-2102",
+    "product_name": "بوشن تبدیل کلمپی",
+    "brand": "نیوپایپ",
+    "group_name": "اتصالات کلمپی",
+    "old_code": null,
+    "product_code": null,
+    "specification": "اتصال دو لوله پنج لایه با سایزهای متفاوت"
+  },
+  {
+    "p_number": "p-2104",
+    "product_name": "زانو چپقی کلمپی",
+    "brand": "نیوپایپ",
+    "group_name": "اتصالات کلمپی",
+    "old_code": null,
+    "product_code": null,
+    "specification": "تغییر مسیر لوله با زاویه 90 درجه و دارای یک سر رزوه از داخل (مادگی)"
+  }
+]
