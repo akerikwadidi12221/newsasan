@@ -46,6 +46,8 @@ The catalog app exposes basic read-only endpoints under `/api/catalog/`:
 - `/brands/<id>/` single brand details
 - `/products/` list of products
 - `/products/<id>/` single product details
+- `/cart/carts/` read-only view of carts
+- `/orders/orders/` read-only view of orders
 
 ## Admin Features
 

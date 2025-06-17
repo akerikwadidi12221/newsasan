@@ -7,4 +7,6 @@ urlpatterns = [
     re_path(r"^$", views.index, name="index"),
     path('admin/', admin.site.urls),
     path('api/catalog/', include('catalog.urls')),
+    path('api/cart/', include('cart.urls')),
+    path('api/orders/', include('orders.urls')),
 ]
