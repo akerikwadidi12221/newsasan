@@ -21,6 +21,8 @@ INSTALLED_APPS = [
     'cart',
     'orders',
     'payments',
+    'tracking',
+    'digipay',
     'support',
 ]
 

@@ -123,3 +123,19 @@ python buildmart-online/backend/manage.py import_products_json --supplier 1
 Each product now supports additional fields such as `base_price`, `sale_price`,
 `min_order_quantity` and `shipping_availability`.
 
+
+## Tracking & Recommendations
+
+User interactions such as product views and add-to-cart events can be recorded via the `/api/track/` endpoint. After collecting events run the management commands
+
+```bash
+python buildmart-online/backend/manage.py process_events
+python buildmart-online/backend/manage.py train_recommender interactions_train.csv
+```
+
+The resulting `recommendations.json` file can be served by the small FastAPI app in `recommendation_service/`.
+
+## Digipay Integration
+
+The optional **Digipay** app provides a very small mock of a credit based payment system. Use `/api/v1/digipay/eligibility-check` to test eligibility and `/api/v1/digipay/account` to fetch the current account balances.
+
