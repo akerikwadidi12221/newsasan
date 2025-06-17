@@ -3,6 +3,7 @@ from pathlib import Path
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 from catalog.models import Product, Category
+from users.models import SupplierProfile
 
 class Command(BaseCommand):
     help = "Import products from a JSON file"
@@ -16,6 +17,10 @@ class Command(BaseCommand):
             '--category', type=int, default=1,
             help='ID of the category to assign to imported products'
         )
+        parser.add_argument(
+            '--supplier', type=int, default=1,
+            help='ID of the supplier to assign to imported products'
+        )
 
     @transaction.atomic
     def handle(self, *args, **options):
@@ -27,6 +32,11 @@ class Command(BaseCommand):
             category = Category.objects.get(pk=options['category'])
         except Category.DoesNotExist:
             raise CommandError('Specified category does not exist')
+
+        try:
+            supplier = SupplierProfile.objects.get(pk=options['supplier'])
+        except SupplierProfile.DoesNotExist:
+            supplier = None
 
         with json_path.open(encoding='utf-8') as f:
             products = json.load(f)
@@ -42,6 +52,11 @@ class Command(BaseCommand):
                 defaults={
                     'name': name,
                     'category': category,
+                    'base_price': item.get('base_price', 0),
+                    'sale_price': item.get('sale_price'),
+                    'min_order_quantity': item.get('min_order_quantity', 1),
+                    'shipping_availability': item.get('shipping_availability', True),
+                    'supplier': supplier,
                 }
             )
             action = 'Created' if created else 'Updated'

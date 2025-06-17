@@ -64,8 +64,15 @@ class RelatedInline(admin.TabularInline):
 # --------------------------------------------------
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display  = ("name", "category", "brand",
-                     "price", "stock_quantity", "is_active")
+    list_display  = (
+        "name",
+        "category",
+        "brand",
+        "base_price",
+        "sale_price",
+        "stock_quantity",
+        "is_active",
+    )
     list_filter   = ("category", "brand", "is_active")
     search_fields = ("name", "description")
     inlines       = [
@@ -80,7 +87,8 @@ class ProductAdmin(admin.ModelAdmin):
             "fields": (("name", "is_active"),
                        "description",
                        ("category", "brand"),
-                       ("price", "stock_quantity"))
+                       ("base_price", "sale_price"),
+                       ("stock_quantity",))
         }),
     )
 

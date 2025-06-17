@@ -83,12 +83,23 @@ class ProductSerializer(serializers.ModelSerializer):
     variants = ProductVariantSerializer(many=True, read_only=True)
     tags = ProductTagSerializer(many=True, read_only=True)
     reviews = ProductReviewSerializer(many=True, read_only=True)
+    supplier = serializers.StringRelatedField(read_only=True)
 
     class Meta:
         model = Product
         fields = [
-            'id', 'name', 'description', 'category', 'brand',
-            'price', 'stock_quantity', 'is_active',
+            'id',
+            'name',
+            'description',
+            'category',
+            'brand',
+            'base_price',
+            'sale_price',
+            'min_order_quantity',
+            'shipping_availability',
+            'supplier',
+            'stock_quantity',
+            'is_active',
             'created_at', 'updated_at',
             'images', 'specifications', 'variants',
             'tags', 'reviews'

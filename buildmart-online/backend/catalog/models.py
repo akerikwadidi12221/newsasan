@@ -58,7 +58,17 @@ class Product(models.Model):
     brand = models.ForeignKey(
         Brand, on_delete=models.SET_NULL, null=True, blank=True
     )
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    base_price = models.DecimalField(max_digits=10, decimal_places=2)
+    sale_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    min_order_quantity = models.PositiveIntegerField(default=1)
+    shipping_availability = models.BooleanField(default=True)
+    supplier = models.ForeignKey(
+        'users.SupplierProfile',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='products'
+    )
     stock_quantity = models.IntegerField(default=0)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

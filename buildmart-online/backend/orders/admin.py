@@ -4,14 +4,21 @@ from .models import Order, OrderItem
 
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
-    readonly_fields = ("product", "quantity", "price_at_purchase")
+    readonly_fields = ("product", "supplier", "quantity", "price_at_purchase")
     extra = 0
     can_delete = False
 
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ("order_number", "user", "status", "total_amount", "created_at")
+    list_display = (
+        "order_number",
+        "user",
+        "status",
+        "total_amount",
+        "shipping_city",
+        "created_at",
+    )
     list_filter = ("status", "created_at")
     date_hierarchy = "created_at"
     inlines = [OrderItemInline]

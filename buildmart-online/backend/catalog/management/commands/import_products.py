@@ -29,7 +29,8 @@ class Command(BaseCommand):
                     description=row["description"],
                     category=category_obj,
                     brand=brand_obj,
-                    price=row["price"],
+                    base_price=row["base_price"],
+                    sale_price=row.get("sale_price") or None,
                     stock_quantity=row["stock_quantity"],
                 )
 

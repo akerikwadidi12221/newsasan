@@ -110,3 +110,16 @@ python buildmart-online/backend/manage.py import_products_json
 The command accepts an optional path to the JSON file and a category ID to
 assign the imported products.
 
+## Supplier Profiles
+
+Suppliers have a dedicated profile model connected to the Django user. Products
+reference a supplier via a foreign key. When importing products you can specify
+the supplier ID using the `--supplier` option:
+
+```bash
+python buildmart-online/backend/manage.py import_products_json --supplier 1
+```
+
+Each product now supports additional fields such as `base_price`, `sale_price`,
+`min_order_quantity` and `shipping_availability`.
+
